@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f6f3ed">
+    <meta name="description" content="Academic Presenting is an open-source Agent Skill that turns your scientific input into a source-aware storyboard, an editable PowerPoint, and a candid quality report.">
+    <meta property="og:title" content="Academic Presenting — Better science deserves better slides">
+    <meta property="og:description" content="Your input first. Claims with sources. A storyboard you approve. Editable PowerPoint and honest quality checks.">
+    <meta property="og:type" content="website">
+    <title>Academic Presenting — Better science deserves better slides</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="#top" aria-label="Academic Presenting, home">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+          <span>academic<span class="brand-light">presenting</span></span>
+        </a>
+        <nav aria-label="Main navigation">
+          <a href="#example">Example</a>
+          <a href="#method">How it works</a>
+          <a href="#status">What works</a>
+        </nav>
+        <a class="header-link" href="https://github.com/HdBraanker/academic-presenting">View on GitHub <span aria-hidden="true">↗</span></a>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero wrap" id="top" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span> Open-source Agent Skill <span class="eyebrow-dot" aria-hidden="true">·</span> Public pilot</p>
+          <h1 id="hero-title">Better science deserves <em>better slides.</em></h1>
+          <p class="hero-lede">Start with your own notes and sources. Shape a story you can defend, approve its storyboard, then make an editable PowerPoint with the evidence trail still visible.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="https://github.com/HdBraanker/academic-presenting/blob/main/PILOT-START.md">Try it with your agent <span aria-hidden="true">↗</span></a>
+            <a class="button button-text" href="#example">Explore the example <span aria-hidden="true">↓</span></a>
+          </div>
+          <p class="hero-note">For Codex desktop, Claude Cowork, or Claude Code with local file and terminal access.</p>
+        </div>
+        <div class="hero-visual" aria-label="Presentation workflow: input, review, approval, and output">
+          <div class="visual-topline"><span>THE PRESENTATION PATH</span><span>01 — 04</span></div>
+          <div class="workflow-row"><span class="workflow-index">01</span><div><strong>Your perspective</strong><small>Notes, outline, audience, purpose</small></div><span class="workflow-glyph" aria-hidden="true">↘</span></div>
+          <div class="workflow-row"><span class="workflow-index">02</span><div><strong>Evidence in view</strong><small>Claims, numbers, sources, caveats</small></div><span class="workflow-glyph" aria-hidden="true">↘</span></div>
+          <div class="workflow-row workflow-highlight"><span class="workflow-index">03</span><div><strong>You approve the storyboard</strong><small>The story is reviewed before rendering</small></div><span class="workflow-glyph" aria-hidden="true">✓</span></div>
+          <div class="workflow-row"><span class="workflow-index">04</span><div><strong>Slides you can edit</strong><small>PowerPoint, contact sheet, quality report</small></div><span class="workflow-glyph" aria-hidden="true">↗</span></div>
+          <div class="visual-footer"><span class="status-light" aria-hidden="true"></span> Your talk stays local</div>
+        </div>
+      </section>
+
+      <section class="proof-section" id="example" aria-labelledby="example-title">
+        <div class="wrap">
+          <div class="section-head">
+            <div><p class="eyebrow">01 / See the difference</p><h2 id="example-title">A result people can read.<br><em>And check.</em></h2></div>
+            <p>Same invented data. A clearer claim, visible uncertainty, and a source trail. Move the slider to compare the illustrative starting slide with a real render from the synthetic FICTA-1 demo.</p>
+          </div>
+          <div class="comparison" style="--reveal: 50%">
+            <div class="comparison-top"><span class="demo-pill">SYNTHETIC DEMO · FICTA-1</span><span>Week 24 ACR20 result</span></div>
+            <div class="comparison-frame">
+              <img class="comparison-before" src="assets/ficta1-before.svg" alt="Illustrative cluttered slide with the fictional FICTA-1 result: 58 percent versus 31 percent, a 27 percentage point difference and a 95 percent confidence interval of 15 to 39 points.">
+              <img class="comparison-after" src="assets/ficta1-after.png" alt="Actual rendered Academic Presenting slide showing the fictional FICTA-1 result as a clear 27 percentage point gain, with confidence interval, comparison and synthetic citation.">
+              <span class="comparison-divider" aria-hidden="true"><span>↔</span></span>
+            </div>
+            <div class="comparison-key"><span><i class="key-after" aria-hidden="true"></i> Rendered after</span><span><i class="key-before" aria-hidden="true"></i> Illustrative before</span></div>
+            <div class="comparison-control"><label for="reveal">Compare slides</label><input id="reveal" type="range" min="0" max="100" value="50" aria-describedby="comparison-note"><output for="reveal" id="reveal-value">50%</output></div>
+          </div>
+          <p class="example-caption" id="comparison-note">The “before” slide is an illustration made for this site. The “after” slide is an actual render from the FICTA-1 demo. FICTA-1, its paper, and every result shown here are fictional. This comparison demonstrates visual communication, not scientific verification.</p>
+        </div>
+      </section>
+
+      <section class="method-section wrap" id="method" aria-labelledby="method-title">
+        <div class="section-head"><div><p class="eyebrow">02 / From evidence to story</p><h2 id="method-title">Good slides start<br><em>before the slides.</em></h2></div><p>The skill works with your agent through a sequence of decisions you can inspect. It does not turn a paper straight into a finished deck.</p></div>
+        <ol class="method-grid">
+          <li><span class="step-num">01</span><h3>Bring your thinking</h3><p>Begin with your notes or outline, your audience and the point you need to make. A short interview fills in what is missing.</p></li>
+          <li><span class="step-num">02</span><h3>Trace the claims</h3><p>Connect statements and numbers to exact source locations. Open questions and expert review stay visible.</p></li>
+          <li><span class="step-num">03</span><h3>Approve the story</h3><p>Read a slide-by-slide storyboard first. No proposed slide is rendered until you explicitly approve it.</p></li>
+          <li><span class="step-num">04</span><h3>Inspect the deck</h3><p>Get editable PowerPoint slides, a contact sheet and a quality report. Review the science and visual result yourself.</p></li>
+        </ol>
+      </section>
+
+      <section class="integrity-section" aria-labelledby="integrity-title">
+        <div class="wrap integrity-grid">
+          <div><p class="eyebrow eyebrow-light">03 / Built for research</p><h2 id="integrity-title">A beautiful slide can still be <em>wrong.</em></h2><p class="integrity-lede">Academic Presenting keeps its checks legible: what the software can verify, what the agent has checked against a source, and what still needs an expert.</p></div>
+          <div class="evidence-card" aria-label="Three distinct evidence states"><div><span class="evidence-icon icon-check" aria-hidden="true">✓</span><strong>Mechanically validated</strong><p>Structure, references and selected number checks pass automated rules.</p></div><div><span class="evidence-icon icon-source" aria-hidden="true">↗</span><strong>Source-backed</strong><p>A claim is tied to a checked source and an exact locator.</p></div><div><span class="evidence-icon icon-review" aria-hidden="true">?</span><strong>Needs expert review</strong><p>Uncertain interpretation stays marked for the presenter.</p></div><small>A clean render is not scientific verification.</small></div>
+        </div>
+      </section>
+
+      <section class="status-section wrap" id="status" aria-labelledby="status-title">
+        <div class="section-head"><div><p class="eyebrow">04 / Pilot status</p><h2 id="status-title">Know what you’re <em>trying.</em></h2></div><p>The public pilot is a working PowerPoint path. Some features are still being developed; the labels below describe this public release.</p></div>
+        <div class="status-grid"><article><span class="status-tag working">Working</span><h3>Build a scientific talk</h3><p>Agent-guided intake, source-aware storyboard, approval gate, editable PowerPoint, render check and quality report.</p></article><article><span class="status-tag experimental">Experimental</span><h3>Use a house style</h3><p>Local PowerPoint template handling works for a limited set of layouts. Inspect the rendered output before presenting.</p></article><article><span class="status-tag planned">Planned</span><h3>Go further</h3><p>HTML presentations, redesign of existing decks and rehearsal support are not in this public pilot.</p></article></div>
+      </section>
+
+      <section class="start-section" id="start" aria-labelledby="start-title"><div class="wrap start-inner"><div><p class="eyebrow eyebrow-light">Start with one small talk</p><h2 id="start-title">Your next presentation<br>can start with a <em>conversation.</em></h2><p>Open the public pilot, paste the start prompt into an agent with local file access, and begin with your own material. The website has no upload form.</p></div><div class="start-actions"><a class="button button-light" href="https://github.com/HdBraanker/academic-presenting/blob/main/PILOT-START.md">Open the start prompt <span aria-hidden="true">↗</span></a><a href="https://github.com/HdBraanker/academic-presenting">Explore the repository <span aria-hidden="true">↗</span></a></div></div></section>
+    </main>
+
+    <footer class="site-footer"><div class="wrap footer-inner"><span>Academic Presenting <span class="footer-divider">/</span> An open-source research presentation skill</span><div><a href="https://github.com/HdBraanker/academic-presenting">GitHub</a><a href="https://github.com/HdBraanker/academic-presenting/blob/main/LICENSE">MIT licence</a></div></div></footer>
+  </body>
+</html>
