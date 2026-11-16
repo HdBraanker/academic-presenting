@@ -1,0 +1,14 @@
+node_modules/
+__pycache__/
+*.pyc
+dist/
+out/
+.DS_Store
+*.log
+# personal presenter profiles stay local
+profiles/*.local.md
+# generated renders
+**/renders/
+
+# personal talks, intake records and real sources (never committed)
+local/

@@ -1,0 +1,84 @@
+{
+  "schema_version": "0.1.0",
+  "meta": {
+    "id": "fictus-demo",
+    "title": "Does drug X lower disease activity in a fictional arthritis cohort?",
+    "subtitle": "Synthetic example. All data are invented.",
+    "presenters": [{ "name": "A. Example", "affiliation": "Example University" }],
+    "language": "en",
+    "duration_minutes": 5,
+    "format": "research"
+  },
+  "profile_ref": "profiles/example-presenter.md",
+  "audience": { "description": "Rheumatology journal club", "expertise": "specialist" },
+  "central_question": "Does drug X reduce disease activity compared with placebo at week 24?",
+  "objectives": ["Understand the effect size and its uncertainty", "Weigh what the trial cannot answer"],
+  "sources": [
+    {
+      "id": "fictus2025",
+      "type": "article",
+      "citation": "Doe J, Roe R. A fictional randomized trial of drug X. Journal of Synthetic Examples. 2025;1:1-10.",
+      "short_cite": "Doe et al., J Synth Ex 2025",
+      "local_path": "examples/research-talk/source.md",
+      "verification": { "status": "user-provided", "method": "file" }
+    }
+  ],
+  "claims": [
+    {
+      "id": "c-primary",
+      "text": "Drug X reduced DAS28 more than placebo at week 24.",
+      "kind": "finding",
+      "relationship": "causal",
+      "evidence_status": "source-backed",
+      "source_refs": [{ "source_id": "fictus2025", "locator": "Table 2" }],
+      "quantities": [
+        { "label": "mean difference in DAS28", "value": -0.9, "ci_level": 0.95, "ci_low": -1.3, "ci_high": -0.5, "n": 120, "comparison": "drug X vs placebo, week 24" }
+      ],
+      "caveats": ["Single-centre", "24-week follow-up only"]
+    },
+    {
+      "id": "c-limit",
+      "text": "The trial was not powered for radiographic progression.",
+      "kind": "limitation",
+      "relationship": "not-applicable",
+      "evidence_status": "source-backed",
+      "source_refs": [{ "source_id": "fictus2025", "locator": "Discussion, p. 8" }]
+    }
+  ],
+  "design": { "aspect_ratio": "16:9", "theme": "light" },
+  "slides": [
+    {
+      "id": "s-title",
+      "purpose": "Open with the question",
+      "title": "Does drug X lower disease activity?",
+      "layout": "title",
+      "timing_seconds": 30,
+      "citation_display": "none"
+    },
+    {
+      "id": "s-result",
+      "purpose": "Show the primary effect with its uncertainty",
+      "title": "Drug X lowered DAS28 by about one point versus placebo",
+      "layout": "stat-card",
+      "claim_ids": ["c-primary"],
+      "blocks": [
+        { "id": "b-stat", "type": "stat", "claim_id": "c-primary", "value": "-0.9 (95% CI -1.3 to -0.5)", "label": "Mean difference in DAS28 at week 24", "emphasis": "primary" },
+        { "id": "b-context", "type": "text", "text": "n = 120, single centre", "role": "caption" }
+      ],
+      "notes": "Stress the confidence interval, not only the point estimate.",
+      "timing_seconds": 120,
+      "animation": { "intent": "build", "steps": ["b-stat", "b-context"] }
+    },
+    {
+      "id": "s-discuss",
+      "purpose": "Open the discussion on what the trial cannot show",
+      "title": "Symptom relief or disease modification?",
+      "layout": "question",
+      "claim_ids": ["c-limit"],
+      "blocks": [
+        { "id": "b-q", "type": "question", "text": "Would you change practice without imaging outcomes?" }
+      ],
+      "timing_seconds": 120
+    }
+  ]
+}

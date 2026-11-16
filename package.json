@@ -1,0 +1,29 @@
+{
+  "name": "academicpresenting",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Open-source Agent Skill for scientifically rigorous academic presentations.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "validate": "node scripts/validate-spec.mjs",
+    "test": "node --test",
+    "build:pptx": "node engines/powerpoint/build.mjs",
+    "build:template": "node engines/powerpoint-template/build.mjs",
+    "build:example": "node engines/powerpoint/build.mjs examples/research-talk/spec.json -o out/ficta1.pptx",
+    "render:pptx": "node scripts/render-check.mjs",
+    "quality": "node modules/quality-review/quality-report.mjs",
+    "test:quick": "node --test \"scripts/*.test.mjs\" \"engines/**/*.test.mjs\" \"examples/**/*.test.mjs\" \"modules/**/*.test.mjs\" \"tests/scientific/*.test.mjs\"",
+    "demo": "node scripts/demo.mjs",
+    "package:pilot": "node scripts/package-pilot.mjs",
+    "learn": "node modules/onboarding/learn-from-edits.mjs"
+  },
+  "dependencies": {
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1",
+    "pptxgenjs": "^4.0.1"
+  }
+}

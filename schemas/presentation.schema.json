@@ -1,0 +1,994 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://academicpresenting.dev/schemas/presentation/0.1.0",
+  "title": "Academic Presenting — presentation spec",
+  "description": "Engine-independent representation of one scientific presentation. Claims live at deck level and are referenced by id from slides and blocks, so every renderer (PowerPoint, HTML) shows the same scientific content. Structural rules are enforced here; cross-reference and integrity rules are enforced by scripts/validate-spec.mjs.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "meta",
+    "audience",
+    "central_question",
+    "objectives",
+    "sources",
+    "claims",
+    "slides"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "language",
+        "duration_minutes",
+        "format"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subtitle": {
+          "type": "string"
+        },
+        "occasion": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Presenter-confirmed occasion for the title-slide line, e.g. lab meeting or grant proposal. Distinct from venue."
+        },
+        "presenters": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "affiliation": {
+                "type": "string"
+              },
+              "role": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "venue": {
+          "type": "string"
+        },
+        "language": {
+          "type": "string",
+          "description": "BCP 47 tag, e.g. en, nl, de-CH",
+          "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$"
+        },
+        "duration_minutes": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "format": {
+          "enum": [
+            "research",
+            "clinical-case",
+            "educational",
+            "journal-club",
+            "other"
+          ],
+          "description": "Narrative pattern used by the story architect. A guide, not a rigid template."
+        }
+      }
+    },
+    "profile_ref": {
+      "type": "string",
+      "description": "Name or relative path of the presenter profile used for design decisions, e.g. presenter-profile.md"
+    },
+    "intake_ref": {
+      "type": "string",
+      "description": "Relative path (from the spec) to the intake record with the presenter's own input. Required by the storyboard step (ADR-0010)."
+    },
+    "audience": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "description",
+        "expertise"
+      ],
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "expertise": {
+          "enum": [
+            "lay",
+            "student",
+            "clinician",
+            "specialist",
+            "mixed"
+          ]
+        },
+        "size": {
+          "type": "string"
+        }
+      }
+    },
+    "central_question": {
+      "type": "string",
+      "minLength": 1
+    },
+    "objectives": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "description": "Learning objectives or intended take-home messages."
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/source"
+      }
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/claim"
+      }
+    },
+    "design": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "aspect_ratio": {
+          "const": "16:9"
+        },
+        "theme": {
+          "enum": [
+            "light",
+            "dark"
+          ]
+        },
+        "tokens": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "font_heading": {
+              "type": "string"
+            },
+            "font_body": {
+              "type": "string"
+            },
+            "colors": {
+              "type": "object",
+              "propertyNames": {
+                "pattern": "^[a-z][a-z0-9_-]*$"
+              },
+              "additionalProperties": {
+                "$ref": "#/$defs/hexColor"
+              }
+            },
+            "min_font_pt": {
+              "type": "number",
+              "minimum": 8
+            }
+          }
+        }
+      }
+    },
+    "slides": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/slide"
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9_-]*$"
+    },
+    "hexColor": {
+      "type": "string",
+      "pattern": "^#?[0-9A-Fa-f]{6}$"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "type",
+        "citation",
+        "verification"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "type": {
+          "enum": [
+            "article",
+            "preprint",
+            "guideline",
+            "abstract",
+            "manuscript",
+            "dataset",
+            "presentation",
+            "book",
+            "personal-communication",
+            "other"
+          ]
+        },
+        "design": {
+          "enum": [
+            "rct",
+            "cohort",
+            "case-control",
+            "cross-sectional",
+            "case-series",
+            "systematic-review",
+            "narrative-review",
+            "guideline",
+            "preclinical",
+            "other"
+          ],
+          "description": "Study design of the source. Used to judge whether causal language is supported."
+        },
+        "citation": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Full reference as it should appear on a references slide."
+        },
+        "short_cite": {
+          "type": "string",
+          "description": "Compact form for slide footers, e.g. 'Smith et al., Lancet 2024'."
+        },
+        "doi": {
+          "type": "string",
+          "pattern": "^10\\.\\d{4,9}/\\S+$"
+        },
+        "pmid": {
+          "type": "string",
+          "pattern": "^\\d{1,9}$"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "local_path": {
+          "type": "string",
+          "description": "Path to the source file the user supplied (never uploaded)."
+        },
+        "licence": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Recorded reuse terms for the source (e.g. CC BY 4.0, CC BY-NC 4.0, all rights reserved). Check whether an individual figure has different third-party terms."
+        },
+        "verification": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "verified",
+                "user-provided",
+                "unverified",
+                "not-found"
+              ],
+              "description": "verified = existence and metadata checked against an external index; user-provided = the user supplied the document itself; unverified = not checked; not-found = checked and could not be located."
+            },
+            "method": {
+              "enum": [
+                "doi-lookup",
+                "pubmed",
+                "crossref",
+                "manual",
+                "file"
+              ]
+            },
+            "checked_on": {
+              "type": "string",
+              "format": "date"
+            },
+            "note": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "quantity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "label",
+        "value"
+      ],
+      "properties": {
+        "label": {
+          "type": "string",
+          "description": "e.g. 'hazard ratio', 'mean difference in DAS28'"
+        },
+        "role": {
+          "enum": [
+            "effect",
+            "arm-descriptive"
+          ],
+          "default": "effect",
+          "description": "effect = comparison or estimate that should carry uncertainty; arm-descriptive = raw rate or count within one group, reported without CI."
+        },
+        "value": {
+          "type": [
+            "number",
+            "string"
+          ]
+        },
+        "unit": {
+          "type": "string"
+        },
+        "ci_level": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "exclusiveMaximum": 1
+        },
+        "ci_low": {
+          "type": "number"
+        },
+        "ci_high": {
+          "type": "number"
+        },
+        "p_value": {
+          "type": [
+            "number",
+            "string"
+          ],
+          "description": "Number, or a reported string such as '<0.001'."
+        },
+        "n": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "comparison": {
+          "type": "string",
+          "description": "e.g. 'treatment vs placebo at week 24'"
+        }
+      }
+    },
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "text",
+        "kind",
+        "evidence_status"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The claim exactly as it may be stated. Renderers may shorten wording for layout but must not change meaning."
+        },
+        "kind": {
+          "enum": [
+            "background",
+            "finding",
+            "hypothesis",
+            "interpretation",
+            "limitation",
+            "recommendation"
+          ]
+        },
+        "relationship": {
+          "enum": [
+            "descriptive",
+            "association",
+            "causal",
+            "not-applicable"
+          ],
+          "description": "Strength of the relationship the evidence supports. Prevents association being presented as causation."
+        },
+        "evidence_status": {
+          "enum": [
+            "mechanically-validated",
+            "source-backed",
+            "needs-expert-review"
+          ],
+          "description": "mechanically-validated = numbers checked by code against supplied data; source-backed = traced to a specific location in a source; needs-expert-review = not (yet) traceable or a judgement call."
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "source_id"
+            ],
+            "properties": {
+              "source_id": {
+                "$ref": "#/$defs/id"
+              },
+              "locator": {
+                "type": "string",
+                "description": "Where in the source: 'Table 2', 'Fig. 3B', 'p. 7, Results'."
+              },
+              "quote": {
+                "type": "string",
+                "maxLength": 300,
+                "description": "Short supporting excerpt for reviewer traceability. Not shown on slides."
+              }
+            }
+          }
+        },
+        "quantities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/quantity"
+          }
+        },
+        "caveats": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Limitations that must travel with the claim (e.g. small n, post-hoc, surrogate endpoint)."
+        },
+        "review_note": {
+          "type": "string",
+          "description": "What a human expert should check."
+        },
+        "review_reason": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Why this claim needs expert review; shown in the storyboard. Distinct from the action in review_note."
+        },
+        "origin": {
+          "enum": [
+            "presenter",
+            "source",
+            "proposed"
+          ],
+          "description": "Where this came from: presenter = the presenter's own notes, outline or interview answers; source = taken from a source document; proposed = suggested by the agent to fill a gap (needs the presenter's explicit agreement)."
+        }
+      }
+    },
+    "block": {
+      "type": "object",
+      "required": [
+        "id",
+        "type"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "type": {
+          "enum": [
+            "text",
+            "bullets",
+            "figure",
+            "stat",
+            "chart",
+            "table",
+            "question"
+          ]
+        },
+        "claim_id": {
+          "$ref": "#/$defs/id",
+          "description": "Claim this block expresses. Required for stat and chart blocks."
+        },
+        "source_id": {
+          "$ref": "#/$defs/id"
+        }
+      },
+      "oneOf": [
+        {
+          "$ref": "#/$defs/textBlock"
+        },
+        {
+          "$ref": "#/$defs/bulletsBlock"
+        },
+        {
+          "$ref": "#/$defs/figureBlock"
+        },
+        {
+          "$ref": "#/$defs/statBlock"
+        },
+        {
+          "$ref": "#/$defs/chartBlock"
+        },
+        {
+          "$ref": "#/$defs/tableBlock"
+        },
+        {
+          "$ref": "#/$defs/questionBlock"
+        }
+      ]
+    },
+    "textBlock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "type",
+        "text"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "claim_id": {
+          "$ref": "#/$defs/id"
+        },
+        "source_id": {
+          "$ref": "#/$defs/id"
+        },
+        "type": {
+          "const": "text"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role": {
+          "enum": [
+            "body",
+            "kicker",
+            "caption",
+            "callout"
+          ]
+        }
+      }
+    },
+    "bulletsBlock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "type",
+        "items"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "claim_id": {
+          "$ref": "#/$defs/id"
+        },
+        "source_id": {
+          "$ref": "#/$defs/id"
+        },
+        "type": {
+          "const": "bullets"
+        },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "text"
+            ],
+            "properties": {
+              "lead": {
+                "type": "string",
+                "description": "Bold keyword at the start of the bullet."
+              },
+              "text": {
+                "type": "string",
+                "minLength": 1
+              },
+              "claim_id": {
+                "$ref": "#/$defs/id"
+              }
+            }
+          }
+        }
+      }
+    },
+    "figureBlock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "type",
+        "path",
+        "alt"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "claim_id": {
+          "$ref": "#/$defs/id"
+        },
+        "source_id": {
+          "$ref": "#/$defs/id"
+        },
+        "type": {
+          "const": "figure"
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "alt": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Required for accessibility."
+        },
+        "caption": {
+          "type": "string"
+        },
+        "origin": {
+          "enum": [
+            "original-from-source",
+            "redrawn",
+            "generated-from-data",
+            "schematic"
+          ],
+          "description": "Redrawn figures need extra review: they can silently change data."
+        },
+        "credit": {
+          "type": "string"
+        }
+      }
+    },
+    "statBlock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "type",
+        "claim_id",
+        "value",
+        "label"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "claim_id": {
+          "$ref": "#/$defs/id"
+        },
+        "source_id": {
+          "$ref": "#/$defs/id"
+        },
+        "type": {
+          "const": "stat"
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Exactly as displayed, e.g. '0.62 (0.48–0.80)'. Must match a quantity of the referenced claim."
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "emphasis": {
+          "enum": [
+            "primary",
+            "secondary"
+          ]
+        }
+      }
+    },
+    "chartBlock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "type",
+        "claim_id",
+        "chart_type",
+        "series"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "claim_id": {
+          "$ref": "#/$defs/id"
+        },
+        "source_id": {
+          "$ref": "#/$defs/id"
+        },
+        "type": {
+          "const": "chart"
+        },
+        "chart_type": {
+          "enum": [
+            "bar",
+            "line",
+            "scatter",
+            "forest"
+          ]
+        },
+        "title": {
+          "type": "string"
+        },
+        "x_label": {
+          "type": "string"
+        },
+        "y_label": {
+          "type": "string"
+        },
+        "categories": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "series": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "name",
+              "values"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "values": {
+                "type": "array",
+                "items": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                }
+              },
+              "ci_low": {
+                "type": "array",
+                "items": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                }
+              },
+              "ci_high": {
+                "type": "array",
+                "items": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "data_origin": {
+          "enum": [
+            "source-table",
+            "supplied-dataset",
+            "digitized-from-figure"
+          ],
+          "description": "digitized-from-figure is approximate and must be labelled as such."
+        }
+      }
+    },
+    "tableBlock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "type",
+        "columns",
+        "rows"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "claim_id": {
+          "$ref": "#/$defs/id"
+        },
+        "source_id": {
+          "$ref": "#/$defs/id"
+        },
+        "type": {
+          "const": "table"
+        },
+        "columns": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": [
+                "string",
+                "number",
+                "null"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "questionBlock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "type",
+        "text"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "claim_id": {
+          "$ref": "#/$defs/id"
+        },
+        "source_id": {
+          "$ref": "#/$defs/id"
+        },
+        "type": {
+          "const": "question"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Discussion or hypothesis question posed to the audience."
+        }
+      }
+    },
+    "slide": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "purpose",
+        "title",
+        "layout"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "section": {
+          "type": "string"
+        },
+        "purpose": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The one intellectual job of this slide (for review, not shown)."
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Prefer a claim or a question over a topic label."
+        },
+        "layout": {
+          "enum": [
+            "title",
+            "section",
+            "claim-figure",
+            "stat-card",
+            "comparison",
+            "take-home",
+            "text",
+            "question",
+            "references"
+          ]
+        },
+        "claim_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          },
+          "uniqueItems": true
+        },
+        "blocks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/block"
+          }
+        },
+        "notes": {
+          "type": "string",
+          "description": "Speaker notes."
+        },
+        "timing_seconds": {
+          "type": "number",
+          "minimum": 0
+        },
+        "citation_display": {
+          "enum": [
+            "footer",
+            "none"
+          ],
+          "default": "footer"
+        },
+        "animation": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "intent": {
+              "enum": [
+                "none",
+                "build",
+                "reveal-sequence",
+                "emphasis"
+              ]
+            },
+            "steps": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/id"
+              },
+              "description": "Block ids in reveal order."
+            }
+          }
+        },
+        "constraints": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "density": {
+              "enum": [
+                "low",
+                "medium",
+                "high"
+              ],
+              "description": "high is allowed when scientifically justified."
+            },
+            "max_words": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "min_font_pt": {
+              "type": "number",
+              "minimum": 8
+            }
+          }
+        },
+        "origin": {
+          "enum": [
+            "presenter",
+            "source",
+            "proposed"
+          ],
+          "description": "Where this came from: presenter = the presenter's own notes, outline or interview answers; source = taken from a source document; proposed = suggested by the agent to fill a gap (needs the presenter's explicit agreement)."
+        }
+      }
+    }
+  }
+}

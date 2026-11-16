@@ -1,0 +1,596 @@
+{
+  "schema_version": "0.1.0",
+  "meta": {
+    "id": "ficta1-journal-club",
+    "title": "Examplimab in active psoriatic arthritis: does a 27-point ACR20 gain hold up?",
+    "subtitle": "Journal club on the FICTA-1 trial. Synthetic example: all data invented.",
+    "presenters": [
+      {
+        "name": "A. Example",
+        "affiliation": "Example University Medical Centre",
+        "role": "Rheumatology fellow"
+      }
+    ],
+    "date": "2026-11-20",
+    "venue": "Departmental journal club",
+    "language": "en",
+    "duration_minutes": 10,
+    "format": "journal-club"
+  },
+  "profile_ref": "profiles/example-presenter.md",
+  "intake_ref": "intake.md",
+  "audience": {
+    "description": "Rheumatologists and fellows at a departmental journal club",
+    "expertise": "specialist",
+    "size": "15-25"
+  },
+  "central_question": "Does examplimab improve joint outcomes in biologic-naive active PsA, and how far can we take the result?",
+  "objectives": [
+    "Interpret the primary effect size together with its confidence interval",
+    "Separate pre-specified findings from post hoc and extrapolated claims",
+    "Decide what this trial can and cannot change in practice"
+  ],
+  "sources": [
+    {
+      "id": "ficta1",
+      "type": "article",
+      "design": "rct",
+      "citation": "Doe J, Roe R, Example A. Examplimab versus placebo in biologic-naive active psoriatic arthritis: the FICTA-1 randomized trial. Journal of Synthetic Examples. 2025;1:1-10. (Synthetic.)",
+      "short_cite": "Doe et al., J Synth Ex 2025 (synthetic)",
+      "local_path": "examples/research-talk/source.md",
+      "verification": {
+        "status": "user-provided",
+        "method": "file",
+        "note": "Fictional paper written for testing."
+      }
+    }
+  ],
+  "claims": [
+    {
+      "id": "c-unmet-need",
+      "text": "Fewer than half of patients with PsA reach minimal disease activity on their first biologic.",
+      "kind": "background",
+      "relationship": "descriptive",
+      "evidence_status": "source-backed",
+      "source_refs": [
+        {
+          "source_id": "ficta1",
+          "locator": "Introduction"
+        }
+      ],
+      "caveats": [
+        "Secondary citation: the trial paper cites reviews; check the primary sources before presenting."
+      ],
+      "origin": "source"
+    },
+    {
+      "id": "c-design",
+      "text": "FICTA-1 randomized 240 biologic-naive adults with active PsA 1:1 to examplimab or placebo for 24 weeks, with ACR20 at week 24 as primary endpoint.",
+      "kind": "background",
+      "relationship": "not-applicable",
+      "evidence_status": "source-backed",
+      "source_refs": [
+        {
+          "source_id": "ficta1",
+          "locator": "Methods"
+        }
+      ],
+      "origin": "source"
+    },
+    {
+      "id": "c-primary",
+      "text": "More patients reached ACR20 at week 24 with examplimab than with placebo (58% vs 31%).",
+      "kind": "finding",
+      "relationship": "causal",
+      "evidence_status": "source-backed",
+      "source_refs": [
+        {
+          "source_id": "ficta1",
+          "locator": "Table 2",
+          "quote": "ACR20 58 (70/120) vs 31 (37/120); 27 pp (15 to 39); p<0.001"
+        }
+      ],
+      "quantities": [
+        {
+          "label": "ACR20 difference, examplimab minus placebo",
+          "value": 27,
+          "unit": "percentage points",
+          "ci_level": 0.95,
+          "ci_low": 15,
+          "ci_high": 39,
+          "p_value": "<0.001",
+          "n": 240,
+          "comparison": "week 24, non-responder imputation"
+        },
+        {
+          "label": "ACR20 response, examplimab",
+          "value": 58,
+          "unit": "%",
+          "n": 120,
+          "role": "arm-descriptive"
+        },
+        {
+          "label": "ACR20 response, placebo",
+          "value": 31,
+          "unit": "%",
+          "n": 120,
+          "role": "arm-descriptive"
+        }
+      ],
+      "caveats": [
+        "Randomized design supports a causal reading for this population and time frame only."
+      ],
+      "origin": "source"
+    },
+    {
+      "id": "c-early",
+      "text": "ACR20 response rates separated from week 4 onwards.",
+      "kind": "finding",
+      "relationship": "causal",
+      "evidence_status": "source-backed",
+      "source_refs": [
+        {
+          "source_id": "ficta1",
+          "locator": "Figure 1 / Table S1"
+        }
+      ],
+      "quantities": [
+        {
+          "label": "ACR20 difference at week 4",
+          "value": 10,
+          "unit": "percentage points",
+          "ci_level": 0.95,
+          "ci_low": 1,
+          "ci_high": 19
+        }
+      ],
+      "origin": "source"
+    },
+    {
+      "id": "c-function",
+      "text": "Physical function improved more with examplimab (HAQ-DI change -0.35 vs -0.12).",
+      "kind": "finding",
+      "relationship": "causal",
+      "evidence_status": "source-backed",
+      "source_refs": [
+        {
+          "source_id": "ficta1",
+          "locator": "Table 2"
+        }
+      ],
+      "quantities": [
+        {
+          "label": "HAQ-DI mean change difference",
+          "value": -0.23,
+          "ci_level": 0.95,
+          "ci_low": -0.36,
+          "ci_high": -0.1,
+          "p_value": "<0.001"
+        }
+      ],
+      "origin": "source"
+    },
+    {
+      "id": "c-skin",
+      "text": "In patients with at least 3% skin involvement, PASI75 was reached by 48% vs 12%.",
+      "kind": "finding",
+      "relationship": "causal",
+      "evidence_status": "source-backed",
+      "source_refs": [
+        {
+          "source_id": "ficta1",
+          "locator": "Table 2"
+        }
+      ],
+      "quantities": [
+        {
+          "label": "PASI75 difference (BSA >=3%)",
+          "value": 36,
+          "unit": "percentage points",
+          "ci_level": 0.95,
+          "ci_low": 23,
+          "ci_high": 49,
+          "p_value": "<0.001",
+          "n": 150
+        }
+      ],
+      "origin": "source"
+    },
+    {
+      "id": "c-safety",
+      "text": "Serious infections occurred in 4 patients (3.3%) on examplimab and 2 (1.7%) on placebo; the trial was not powered to compare safety.",
+      "kind": "finding",
+      "relationship": "descriptive",
+      "evidence_status": "source-backed",
+      "source_refs": [
+        {
+          "source_id": "ficta1",
+          "locator": "Table 2; Discussion"
+        }
+      ],
+      "quantities": [
+        {
+          "label": "Serious infections, examplimab",
+          "value": 4,
+          "unit": "patients",
+          "n": 120,
+          "role": "arm-descriptive"
+        },
+        {
+          "label": "Serious infections, placebo",
+          "value": 2,
+          "unit": "patients",
+          "n": 120,
+          "role": "arm-descriptive"
+        }
+      ],
+      "caveats": [
+        "Not tested statistically; numbers too small for comparison."
+      ],
+      "origin": "source"
+    },
+    {
+      "id": "c-crp",
+      "text": "The benefit may be larger in patients with baseline CRP of at least 10 mg/L (38 vs 20 percentage points).",
+      "kind": "hypothesis",
+      "relationship": "association",
+      "evidence_status": "source-backed",
+      "source_refs": [
+        {
+          "source_id": "ficta1",
+          "locator": "Results, post hoc subgroup"
+        }
+      ],
+      "quantities": [
+        {
+          "label": "ACR20 difference, CRP >=10 mg/L",
+          "value": 38,
+          "unit": "percentage points"
+        },
+        {
+          "label": "ACR20 difference, CRP <10 mg/L",
+          "value": 20,
+          "unit": "percentage points"
+        },
+        {
+          "label": "interaction",
+          "value": "interaction test",
+          "p_value": 0.04
+        }
+      ],
+      "caveats": [
+        "Post hoc subgroup analysis; hypothesis-generating only."
+      ],
+      "origin": "source"
+    },
+    {
+      "id": "c-limits",
+      "text": "The trial lasted 24 weeks, did not assess radiographic progression and enrolled biologic-naive patients in one country.",
+      "kind": "limitation",
+      "relationship": "not-applicable",
+      "evidence_status": "source-backed",
+      "source_refs": [
+        {
+          "source_id": "ficta1",
+          "locator": "Discussion"
+        }
+      ],
+      "origin": "source"
+    },
+    {
+      "id": "c-tnf-ir",
+      "text": "Examplimab could be an option after failure of a TNF inhibitor.",
+      "kind": "interpretation",
+      "relationship": "not-applicable",
+      "evidence_status": "needs-expert-review",
+      "review_note": "Presenter's extrapolation. FICTA-1 enrolled biologic-naive patients only; no data in TNF-inadequate responders.",
+      "origin": "presenter"
+    }
+  ],
+  "design": {
+    "aspect_ratio": "16:9",
+    "theme": "light",
+    "tokens": {
+      "font_heading": "Calibri",
+      "font_body": "Calibri",
+      "colors": {
+        "ink": "1B1F23",
+        "muted": "646E78",
+        "accent": "1F3A5F",
+        "highlight": "B03A2E",
+        "surface": "F3F4F6"
+      },
+      "min_font_pt": 14
+    }
+  },
+  "slides": [
+    {
+      "id": "s01-title",
+      "purpose": "Frame the talk as a question the audience will answer",
+      "title": "Examplimab in active PsA: does a 27-point ACR20 gain hold up?",
+      "layout": "title",
+      "claim_ids": [
+        "c-primary"
+      ],
+      "blocks": [
+        {
+          "id": "b01-sub",
+          "type": "text",
+          "text": "FICTA-1 journal club. Synthetic example, all data invented.",
+          "role": "kicker"
+        }
+      ],
+      "notes": "Open with the headline number, then say we will test how far it carries.",
+      "timing_seconds": 30,
+      "citation_display": "none",
+      "origin": "presenter"
+    },
+    {
+      "id": "s02-design",
+      "section": "Study",
+      "purpose": "Show who was studied and for how long, so the audience can judge applicability",
+      "title": "240 biologic-naive patients, randomized for 24 weeks",
+      "layout": "claim-figure",
+      "claim_ids": [
+        "c-unmet-need",
+        "c-design"
+      ],
+      "blocks": [
+        {
+          "id": "b02-fig",
+          "type": "figure",
+          "path": "examples/research-talk/figures/study-design.png",
+          "alt": "Flow diagram: 240 biologic-naive adults with active PsA randomized 1:1 to examplimab or placebo (120 each) for 24 weeks double-blind; primary endpoint ACR20 at week 24.",
+          "origin": "schematic",
+          "claim_id": "c-design",
+          "source_id": "ficta1"
+        },
+        {
+          "id": "b02-need",
+          "type": "text",
+          "text": "Fewer than half reach minimal disease activity on a first biologic.",
+          "role": "callout",
+          "claim_id": "c-unmet-need"
+        }
+      ],
+      "notes": "Point out biologic-naive. That matters for the last slide.",
+      "timing_seconds": 75,
+      "origin": "source"
+    },
+    {
+      "id": "s03-primary",
+      "section": "Results",
+      "purpose": "Deliver the primary result with its uncertainty",
+      "title": "Examplimab added 27 ACR20 responders per 100 patients",
+      "layout": "stat-card",
+      "claim_ids": [
+        "c-primary"
+      ],
+      "blocks": [
+        {
+          "id": "b03-stat",
+          "type": "stat",
+          "claim_id": "c-primary",
+          "value": "+27 pp (95% CI 15 to 39)",
+          "label": "ACR20 at week 24, examplimab vs placebo",
+          "emphasis": "primary"
+        },
+        {
+          "id": "b03-arms",
+          "type": "text",
+          "text": "58% vs 31% (n = 120 per arm), p < 0.001",
+          "role": "caption",
+          "claim_id": "c-primary"
+        }
+      ],
+      "notes": "The lower CI bound is still 15 points. Number needed to treat roughly 4.",
+      "timing_seconds": 90,
+      "animation": {
+        "intent": "build",
+        "steps": [
+          "b03-stat",
+          "b03-arms"
+        ]
+      },
+      "origin": "presenter"
+    },
+    {
+      "id": "s04-time",
+      "section": "Results",
+      "purpose": "Show the effect is early and sustained, not a week-24 artefact",
+      "title": "Response separated from week 4 and kept rising",
+      "layout": "claim-figure",
+      "claim_ids": [
+        "c-early",
+        "c-primary"
+      ],
+      "blocks": [
+        {
+          "id": "b04-chart",
+          "type": "chart",
+          "chart_type": "line",
+          "claim_id": "c-early",
+          "source_id": "ficta1",
+          "title": "ACR20 response over time",
+          "x_label": "Week",
+          "y_label": "ACR20 response (%)",
+          "categories": [
+            "0",
+            "4",
+            "8",
+            "12",
+            "16",
+            "24"
+          ],
+          "series": [
+            {
+              "name": "Examplimab",
+              "values": [
+                0,
+                22,
+                38,
+                49,
+                55,
+                58
+              ]
+            },
+            {
+              "name": "Placebo",
+              "values": [
+                0,
+                12,
+                19,
+                24,
+                28,
+                31
+              ]
+            }
+          ],
+          "data_origin": "source-table"
+        }
+      ],
+      "notes": "Week-4 difference 10 points, CI 1 to 19: real but imprecise.",
+      "timing_seconds": 75,
+      "origin": "source"
+    },
+    {
+      "id": "s05-secondary",
+      "section": "Results",
+      "purpose": "Put function, skin and safety side by side",
+      "title": "Function and skin improved; infections need longer follow-up",
+      "layout": "comparison",
+      "claim_ids": [
+        "c-function",
+        "c-skin",
+        "c-safety"
+      ],
+      "blocks": [
+        {
+          "id": "b05-table",
+          "type": "table",
+          "source_id": "ficta1",
+          "columns": [
+            "Outcome (week 24)",
+            "Examplimab",
+            "Placebo",
+            "Difference (95% CI)"
+          ],
+          "rows": [
+            [
+              "HAQ-DI, mean change",
+              "-0.35",
+              "-0.12",
+              "-0.23 (-0.36 to -0.10)"
+            ],
+            [
+              "PASI75, BSA >=3%",
+              "48%",
+              "12%",
+              "36 pp (23 to 49)"
+            ],
+            [
+              "Serious infections",
+              "4 (3.3%)",
+              "2 (1.7%)",
+              "not tested"
+            ]
+          ]
+        }
+      ],
+      "notes": "Do not read the infection row as 'safe'. The trial cannot tell.",
+      "timing_seconds": 90,
+      "constraints": {
+        "density": "medium"
+      },
+      "origin": "proposed"
+    },
+    {
+      "id": "s06-crp",
+      "section": "Discussion",
+      "purpose": "Invite discussion on a post hoc signal without overselling it",
+      "title": "Does baseline CRP identify who benefits most?",
+      "layout": "question",
+      "claim_ids": [
+        "c-crp"
+      ],
+      "blocks": [
+        {
+          "id": "b06-q",
+          "type": "question",
+          "text": "Would you select patients on CRP based on a post hoc subgroup?"
+        },
+        {
+          "id": "b06-data",
+          "type": "text",
+          "text": "Post hoc: +38 pp if CRP >=10 mg/L vs +20 pp if lower (interaction p = 0.04)",
+          "role": "caption",
+          "claim_id": "c-crp"
+        }
+      ],
+      "timing_seconds": 75,
+      "origin": "presenter"
+    },
+    {
+      "id": "s07-takehome",
+      "section": "Discussion",
+      "purpose": "Leave three messages, each with its evidence level visible",
+      "title": "Clear 24-week benefit, open questions beyond it",
+      "layout": "take-home",
+      "claim_ids": [
+        "c-primary",
+        "c-limits",
+        "c-tnf-ir"
+      ],
+      "blocks": [
+        {
+          "id": "b07-points",
+          "type": "bullets",
+          "items": [
+            {
+              "lead": "Effect",
+              "text": "Robust ACR20 gain in biologic-naive PsA over 24 weeks",
+              "claim_id": "c-primary"
+            },
+            {
+              "lead": "Unknown",
+              "text": "Radiographic progression and longer-term safety",
+              "claim_id": "c-limits"
+            },
+            {
+              "lead": "Our reading",
+              "text": "Possibly an option after TNF inhibitor failure, not tested here",
+              "claim_id": "c-tnf-ir"
+            }
+          ]
+        }
+      ],
+      "notes": "Flag the third point explicitly as our interpretation, not the trial's finding.",
+      "timing_seconds": 60,
+      "animation": {
+        "intent": "reveal-sequence",
+        "steps": [
+          "b07-points"
+        ]
+      },
+      "origin": "presenter"
+    },
+    {
+      "id": "s08-refs",
+      "purpose": "Give the full reference",
+      "title": "Reference",
+      "layout": "references",
+      "blocks": [
+        {
+          "id": "b08-ref",
+          "type": "text",
+          "text": "Doe J, Roe R, Example A. Examplimab versus placebo in biologic-naive active psoriatic arthritis: the FICTA-1 randomized trial. Journal of Synthetic Examples. 2025;1:1-10. Synthetic example, not a real publication.",
+          "role": "body",
+          "source_id": "ficta1"
+        }
+      ],
+      "timing_seconds": 15,
+      "citation_display": "none",
+      "origin": "source"
+    }
+  ]
+}
