@@ -13,6 +13,10 @@ Status: **working** for a validated presentation spec → readable storyboard �
 
 Keep the storyboard, approval receipt, and generated deck local unless the user authorizes an external transfer. Outputs under `out/` are ignored by Git.
 
+## Existing deck in
+
+A presenter who brings a finished deck to improve follows `upgrade.md` first (diagnosis, scope, change plan; experimental, T26). The deck counts as a supplied outline. The change plan does not replace steps 3–6 above.
+
 ## Interpretation
 
 - `--origin outline` means the storyboard completes the supplied outline; it does **not** mean the user approved it.

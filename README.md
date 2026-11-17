@@ -19,7 +19,7 @@ npm run demo
 
 Node.js 20+ is required. LibreOffice, Poppler (`pdftoppm` and `pdftotext`) and Python 3 enable the render check and contact sheet; `python-pptx` is optional for filling an institutional template. The demo uses invented FICTA-1 data. It automatically approves only that synthetic storyboard. A real talk requires the presenter's approval.
 
-The working skill instructions are in [SKILL.md](SKILL.md). The agent-assisted source-to-claim step needs a person's scientific review. Institutional template handling is experimental. HTML output and redesign of existing decks are planned.
+The working skill instructions are in [SKILL.md](SKILL.md). The agent-assisted source-to-claim step needs a person's scientific review. Institutional template handling is experimental. Upgrading an existing deck is experimental: the agent diagnoses each slide and rebuilds through an approved storyboard, without editing your original file. HTML output and in-place editing are planned.
 
 Keep real talks in `local/` and presenter profiles in `profiles/*.local.md`; Git ignores both. Do not upload patient data or confidential material. The skill itself does not upload files, while an agent's connected services have their own data settings.
 

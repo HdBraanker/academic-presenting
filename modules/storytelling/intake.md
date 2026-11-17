@@ -18,6 +18,7 @@ For each question below, mark: answered by the notes (quote the line), partly an
 | 6 | Which discussion do you want to provoke? | Question slides |
 | 7 | Own figures, images, data or a case to include | What only the presenter can bring |
 | 8 | Include a full references slide at the end? | Default yes; a presenter's local profile may set `references_slide_default: false`. A choice for this talk overrides that default. |
+| 9 | Material from others you may want to show (a collaborator's slides, figures, unpublished data): what is it, whose is it, may you show it here? | Arrives mid-build otherwise and changes the plan; unpublished or borrowed material needs a label on the slide and the owner's permission |
 
 ## 3. Interview only the open questions
 At most four at a time, each skippable, with the profile's defaults offered. Never ask what the notes already answer.
@@ -35,6 +36,7 @@ date: YYYY-MM-DD
 ## Title slide (exact occasion line, presenter/co-presenter names and affiliations | source: notes/interview/default)
 ## References slide (yes/no | source: notes/interview/profile/default)
 ## Team and budget facts to confirm (names, roles, amounts, period, funding source | source: notes/interview/document)
+## Material from others (what | owner | published? | permission to show: yes/no/ask | source: notes/interview)
 ## Gaps the agent will fill (these become origin: proposed)
 ```
 
