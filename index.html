@@ -1,103 +1,78 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#f6f3ed">
-    <meta name="description" content="Academic Presenting is an open-source Agent Skill that turns your scientific input into a source-aware storyboard, an editable PowerPoint, and a candid quality report.">
-    <meta property="og:title" content="Academic Presenting — Better science deserves better slides">
-    <meta property="og:description" content="Your input first. Claims with sources. A storyboard you approve. Editable PowerPoint and honest quality checks.">
-    <meta property="og:type" content="website">
-    <title>Academic Presenting — Better science deserves better slides</title>
-    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css">
-    <script src="app.js" defer></script>
-  </head>
-  <body>
-    <a class="skip-link" href="#main">Skip to content</a>
-    <header class="site-header">
-      <div class="wrap header-inner">
-        <a class="brand" href="#top" aria-label="Academic Presenting, home">
-          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
-          <span>academic<span class="brand-light">presenting</span></span>
-        </a>
-        <nav aria-label="Main navigation">
-          <a href="#example">Example</a>
-          <a href="#method">How it works</a>
-          <a href="#status">What works</a>
-        </nav>
-        <a class="header-link" href="https://github.com/HdBraanker/academic-presenting">View on GitHub <span aria-hidden="true">↗</span></a>
-      </div>
-    </header>
-
-    <main id="main">
-      <section class="hero wrap" id="top" aria-labelledby="hero-title">
+<html lang="en" data-type="software" data-radius="soft">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="page-type" content="software">
+  <meta name="site-kind" content="software">
+  <meta name="theme-color" content="#f6f3ed">
+  <meta name="description" content="An open-source skill for AI agents. It turns your notes, outline and sources into editable PowerPoint slides, with numbers checked against your sources.">
+  <meta property="og:title" content="Academic Presenting: research slides from your own story">
+  <meta property="og:description" content="An open-source skill for AI agents. It turns your notes, outline and sources into editable PowerPoint slides, with numbers checked against your sources.">
+  <meta property="og:type" content="website">
+  <title>Academic Presenting: research slides from your own story</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add("m-enter");</script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header nav">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top" aria-label="Academic Presenting, top of page"><span class="brand-mark" aria-hidden="true">AP</span><span class="brand-name">Academic Presenting</span></a>
+      <nav aria-label="Main navigation"><a href="#example">Example</a><a href="#workflow">Workflow</a><a href="#pilot">Pilot</a></nav>
+      <a class="header-cta" href="https://github.com/HdBraanker/academic-presenting/blob/main/PILOT-START.md">Get the start prompt <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero" id="top" data-enter>
+      <div class="wrap hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span> Open-source Agent Skill <span class="eyebrow-dot" aria-hidden="true">·</span> Public pilot</p>
-          <h1 id="hero-title">Better science deserves <em>better slides.</em></h1>
-          <p class="hero-lede">Start with your own notes and sources. Shape a story you can defend, approve its storyboard, then make an editable PowerPoint with the evidence trail still visible.</p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="https://github.com/HdBraanker/academic-presenting/blob/main/PILOT-START.md">Try it with your agent <span aria-hidden="true">↗</span></a>
-            <a class="button button-text" href="#example">Explore the example <span aria-hidden="true">↓</span></a>
-          </div>
-          <p class="hero-note">For Codex desktop, Claude Cowork, or Claude Code with local file and terminal access.</p>
+          <p class="kicker">Open-source skill · Public pilot</p>
+          <h1>Research slides from your own notes</h1>
+          <p class="lede">Bring your notes, an outline or a spoken run-through. The skill helps you find the core message, then builds editable slides that check numbers against your sources.</p>
+          <p class="hard-fact">Free and open source under the MIT licence.</p>
+          <div class="hero-actions"><a class="button button-primary" href="https://github.com/HdBraanker/academic-presenting/blob/main/PILOT-START.md">Get the start prompt <span aria-hidden="true">↗</span></a><a class="text-link" href="#example">See the example <span aria-hidden="true">↓</span></a></div>
         </div>
-        <div class="hero-visual" aria-label="Excerpt from the real storyboard of the fictional FICTA-1 demonstration">
-          <div class="visual-topline"><span>FICTA-1 · SYNTHETIC EXAMPLE</span><span>STORYBOARD / SLIDE 03</span></div>
-          <p class="specimen-label">The message before the slide</p>
-          <h2>Examplimab added 27 ACR20 responders per 100 patients</h2>
-          <div class="specimen-detail"><span>Purpose</span><p>Deliver the primary result with its uncertainty.</p></div>
-          <div class="specimen-detail"><span>Evidence</span><p>58% vs 31% at week 24; 95% CI for the difference: 15 to 39 percentage points. Fictional FICTA-1, Table 2.</p></div>
-          <div class="specimen-gate"><span aria-hidden="true">✓</span><div><strong>Story first. Slides after approval.</strong><small>This is an excerpt from the synthetic demo storyboard.</small></div></div>
+        <div class="hero-art hero-single" aria-label="FICTA-1 synthetic results slide made with the skill">
+          <div class="hero-stack after"><img src="assets/ficta1/after-3.webp" alt="Synthetic FICTA-1 results slide made with the skill: an icon array of 100 patients, the 27 percentage-point difference and its 95% confidence interval" width="1920" height="1080"></div>
+          <span class="hero-art-seal">FICTA-1 · SYNTHETIC DEMO</span>
         </div>
-      </section>
-
-      <section class="proof-section" id="example" aria-labelledby="example-title">
-        <div class="wrap">
-          <div class="section-head">
-            <div><p class="eyebrow">01 / See the difference</p><h2 id="example-title">A result people can read.<br><em>And check.</em></h2></div>
-            <p>Same invented data. A clearer claim, visible uncertainty, and a source trail. Move the slider to compare the illustrative starting slide with a real render from the synthetic FICTA-1 demo.</p>
-          </div>
-          <div class="comparison" style="--reveal: 50%">
-            <div class="comparison-top"><span class="demo-pill">SYNTHETIC DEMO · FICTA-1</span><span>Week 24 ACR20 result</span></div>
-            <div class="comparison-frame">
-              <img class="comparison-before" src="assets/ficta1-before.svg" alt="Illustrative cluttered slide with the fictional FICTA-1 result: 58 percent versus 31 percent, a 27 percentage point difference and a 95 percent confidence interval of 15 to 39 points.">
-              <img class="comparison-after" src="assets/ficta1-after.png" alt="Actual rendered Academic Presenting slide showing the fictional FICTA-1 result as a clear 27 percentage point gain, with confidence interval, comparison and synthetic citation.">
-              <span class="comparison-divider" aria-hidden="true"><span>↔</span></span>
-            </div>
-            <div class="comparison-key"><span><i class="key-after" aria-hidden="true"></i> Rendered after</span><span><i class="key-before" aria-hidden="true"></i> Illustrative before</span></div>
-            <div class="comparison-control"><label for="reveal">Compare slides</label><input id="reveal" type="range" min="0" max="100" value="50" aria-describedby="comparison-note"><output for="reveal" id="reveal-value">50%</output></div>
-          </div>
-          <div class="example-readout"><div><strong>+27 percentage points</strong><span>ACR20 at week 24: 58% vs 31%; 95% CI for the difference, 15–39 points.</span></div><a href="assets/ficta1-after.png" target="_blank" rel="noopener">Open the rendered slide at full size <span aria-hidden="true">↗</span></a></div>
-          <p class="example-caption" id="comparison-note">The “before” slide is an illustration made for this site. The “after” slide is an actual render from the FICTA-1 demo. FICTA-1, its paper, and every result shown here are fictional. This comparison demonstrates visual communication, not scientific verification.</p>
+      </div>
+    </section>
+    <section class="section workflow" id="workflow">
+      <div class="wrap">
+        <div class="section-intro"><h2>Your story first, then the slides</h2><p>You still read the paper, choose the outline and decide the main messages. The skill turns those choices into a storyboard you approve, then takes care of the layout.</p></div>
+        <div class="storyboard-window app-frame" aria-label="FICTA-1 storyboard excerpt">
+          <div class="window-bar"><span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>FICTA-1 / storyboard.md</span><span class="window-state">Review before rendering</span></div>
+          <div class="window-body"><div class="slide-list"><span class="ui-label">SLIDE SEQUENCE</span><div class="slide-choice"><span>01</span><span>Examplimab in active PsA: does a 27-point ACR20 gain hold up?</span></div><div class="slide-choice"><span>02</span><span>240 biologic-naive patients, randomized for 24 weeks</span></div><div class="slide-choice active"><span>03</span><span>Examplimab added 27 ACR20 responders per 100 patients</span></div><div class="slide-choice"><span>04</span><span>Response separated from week 4 and kept rising</span></div><div class="slide-choice"><span>05</span><span>Function and skin improved; infections need longer follow-up</span></div></div>
+          <div class="slide-detail"><div class="detail-head"><span class="ui-label">SLIDE 03 · RESULTS</span><span class="status-chip">source-backed</span></div><h3>Examplimab added 27 ACR20 responders per 100 patients</h3><p class="claim">More patients reached ACR20 at week 24 with examplimab than with placebo (58% vs 31%).</p><div class="source-row"><span>Source</span><strong>Doe et al., J Synth Ex 2025 (synthetic) · Table 2</strong></div><div class="source-row"><span>Review</span><strong>Randomized design supports a causal reading for this population and time frame only.</strong></div><div class="approval-row"><span>Explicit approval is required before rendering.</span><button type="button" disabled title="Demonstration only">Approve</button></div></div></div>
         </div>
-      </section>
-
-      <section class="method-section wrap" id="method" aria-labelledby="method-title">
-        <div class="section-head"><div><p class="eyebrow">02 / From evidence to story</p><h2 id="method-title">Good slides start<br><em>before the slides.</em></h2></div><p>The skill works with your agent through a sequence of decisions you can inspect. It does not turn a paper straight into a finished deck.</p></div>
-        <ol class="method-grid">
-          <li><span class="step-num">01</span><h3>Bring your thinking</h3><p>Begin with your notes or outline, your audience and the point you need to make. A short interview fills in what is missing.</p></li>
-          <li><span class="step-num">02</span><h3>Trace the claims</h3><p>Connect statements and numbers to exact source locations. Open questions and expert review stay visible.</p></li>
-          <li><span class="step-num">03</span><h3>Approve the story</h3><p>Read a slide-by-slide storyboard first. No proposed slide is rendered until you explicitly approve it.</p></li>
-          <li><span class="step-num">04</span><h3>Inspect the deck</h3><p>Get editable PowerPoint slides, a contact sheet and a quality report. Review the science and visual result yourself.</p></li>
-        </ol>
-      </section>
-
-      <section class="integrity-section" aria-labelledby="integrity-title">
-        <div class="wrap integrity-grid">
-          <div><p class="eyebrow eyebrow-light">03 / Built for research</p><h2 id="integrity-title">A beautiful slide can still be <em>wrong.</em></h2><p class="integrity-lede">Academic Presenting keeps its checks legible: what the software can verify, what the agent has checked against a source, and what still needs an expert.</p></div>
-          <div class="evidence-card" aria-label="Three distinct evidence states"><div><span class="evidence-icon icon-check" aria-hidden="true">✓</span><strong>Mechanically validated</strong><p>Structure, references and selected number checks pass automated rules.</p></div><div><span class="evidence-icon icon-source" aria-hidden="true">↗</span><strong>Source-backed</strong><p>A claim is tied to a checked source and an exact locator.</p></div><div><span class="evidence-icon icon-review" aria-hidden="true">?</span><strong>Needs expert review</strong><p>Uncertain interpretation stays marked for the presenter.</p></div><small>A clean render is not scientific verification.</small></div>
+      </div>
+    </section>
+    <section class="section example" id="example">
+      <div class="wrap">
+        <div class="section-intro"><h2>Your message, with the numbers checked</h2><p>FICTA-1 is a trial we invented for this demo, so no real patient data appear here. The same result three ways: a typical hand-made slide, an AI-styled slide we made as an illustration, and the slide after the skill.</p></div>
+        <div class="three-way" aria-label="Three views of the same synthetic FICTA-1 result">
+          <div class="three-way-card"><span class="three-way-label">Typical slide</span><a href="assets/ficta1/before-5.webp" target="_blank" rel="noopener" aria-label="Typical slide: open full size"><img src="assets/ficta1/before-5-thumb.webp" alt="Hand-made synthetic result slide with a bar chart and bullet points" width="640" height="360"></a></div>
+          <div class="three-way-card"><span class="three-way-label">AI-styled (illustration)</span><a href="assets/ficta1/ai-styled-illustration.webp" target="_blank" rel="noopener" aria-label="AI-styled (illustration): open full size"><img src="assets/ficta1/ai-styled-illustration-thumb.webp" alt="Illustration made for this site showing the result as a large decorative number and bars" width="640" height="360"></a></div>
+          <div class="three-way-card"><span class="three-way-label">With the skill</span><a href="assets/ficta1/after-3.webp" target="_blank" rel="noopener" aria-label="With the skill: open full size"><img src="assets/ficta1/after-3-thumb.webp" alt="Skill-rendered synthetic result slide with an icon array, difference and confidence interval" width="640" height="360"></a></div>
         </div>
-      </section>
-
-      <section class="status-section wrap" id="status" aria-labelledby="status-title">
-        <div class="section-head"><div><p class="eyebrow">04 / Pilot status</p><h2 id="status-title">Know what you’re <em>trying.</em></h2></div><p>The public pilot is a working PowerPoint path. Some features are still being developed; the labels below describe this public release.</p></div>
-        <div class="status-grid"><article><span class="status-tag working">Working</span><h3>Build a scientific talk</h3><p>Agent-guided intake, source-aware storyboard, approval gate, editable PowerPoint, render check and quality report.</p></article><article><span class="status-tag experimental">Experimental</span><h3>Use a house style</h3><p>Local PowerPoint template handling works for a limited set of layouts. Inspect the rendered output before presenting.</p></article><article><span class="status-tag planned">Planned</span><h3>Go further</h3><p>HTML presentations, redesign of existing decks and rehearsal support are not in this public pilot.</p></article></div>
-      </section>
-
-      <section class="start-section" id="start" aria-labelledby="start-title"><div class="wrap start-inner"><div><p class="eyebrow eyebrow-light">Start with one small talk</p><h2 id="start-title">Your next presentation<br>can start with a <em>conversation.</em></h2><p>Open the public pilot, paste the start prompt into an agent with local file access, and begin with your own material. The website has no upload form.</p></div><div class="start-actions"><a class="button button-light" href="https://github.com/HdBraanker/academic-presenting/blob/main/PILOT-START.md">Open the start prompt <span aria-hidden="true">↗</span></a><a href="https://github.com/HdBraanker/academic-presenting">Explore the repository <span aria-hidden="true">↗</span></a></div></div></section>
-    </main>
-
-    <footer class="site-footer"><div class="wrap footer-inner"><span>Academic Presenting <span class="footer-divider">/</span> An open-source research presentation skill</span><div><a href="https://github.com/HdBraanker/academic-presenting">GitHub</a><a href="https://github.com/HdBraanker/academic-presenting/blob/main/LICENSE">MIT licence</a></div></div></footer>
-  </body>
+        <div class="deck-strip" aria-label="The original and revised eight-slide decks in their own sequence">
+          <div class="deck-sequence"><div class="deck-strip-head"><span>Typical slide</span><span>1–8</span></div><div class="deck-run">
+            <a href="assets/ficta1/before-1.webp" target="_blank" rel="noopener"><img src="assets/ficta1/before-1-thumb.webp" alt="Typical deck, slide 1"></a><a href="assets/ficta1/before-2.webp" target="_blank" rel="noopener"><img src="assets/ficta1/before-2-thumb.webp" alt="Typical deck, slide 2"></a><a href="assets/ficta1/before-3.webp" target="_blank" rel="noopener"><img src="assets/ficta1/before-3-thumb.webp" alt="Typical deck, slide 3"></a><a href="assets/ficta1/before-4.webp" target="_blank" rel="noopener"><img src="assets/ficta1/before-4-thumb.webp" alt="Typical deck, slide 4"></a><a href="assets/ficta1/before-5.webp" target="_blank" rel="noopener"><img src="assets/ficta1/before-5-thumb.webp" alt="Typical deck, slide 5"></a><a href="assets/ficta1/before-6.webp" target="_blank" rel="noopener"><img src="assets/ficta1/before-6-thumb.webp" alt="Typical deck, slide 6"></a><a href="assets/ficta1/before-7.webp" target="_blank" rel="noopener"><img src="assets/ficta1/before-7-thumb.webp" alt="Typical deck, slide 7"></a><a href="assets/ficta1/before-8.webp" target="_blank" rel="noopener"><img src="assets/ficta1/before-8-thumb.webp" alt="Typical deck, slide 8"></a>
+          </div></div>
+          <div class="deck-sequence"><div class="deck-strip-head"><span>With the skill</span><span>1–8</span></div><div class="deck-run">
+            <a href="assets/ficta1/after-1.webp" target="_blank" rel="noopener"><img src="assets/ficta1/after-1-thumb.webp" alt="Revised deck, slide 1"></a><a href="assets/ficta1/after-2.webp" target="_blank" rel="noopener"><img src="assets/ficta1/after-2-thumb.webp" alt="Revised deck, slide 2"></a><a href="assets/ficta1/after-3.webp" target="_blank" rel="noopener"><img src="assets/ficta1/after-3-thumb.webp" alt="Revised deck, slide 3"></a><a href="assets/ficta1/after-4.webp" target="_blank" rel="noopener"><img src="assets/ficta1/after-4-thumb.webp" alt="Revised deck, slide 4"></a><a href="assets/ficta1/after-5.webp" target="_blank" rel="noopener"><img src="assets/ficta1/after-5-thumb.webp" alt="Revised deck, slide 5"></a><a href="assets/ficta1/after-6.webp" target="_blank" rel="noopener"><img src="assets/ficta1/after-6-thumb.webp" alt="Revised deck, slide 6"></a><a href="assets/ficta1/after-7.webp" target="_blank" rel="noopener"><img src="assets/ficta1/after-7-thumb.webp" alt="Revised deck, slide 7"></a><a href="assets/ficta1/after-8.webp" target="_blank" rel="noopener"><img src="assets/ficta1/after-8-thumb.webp" alt="Revised deck, slide 8"></a>
+          </div></div>
+        </div>
+      </div>
+    </section>
+    <section class="section checks" id="checks"><div class="wrap checks-grid"><div class="checks-copy"><h2>Numbers checked against your sources</h2><p>A made-up number on a slide can travel into a talk, a poster or a paper. The skill links each claim to its place in your source and flags what you still need to check.</p><div class="state-list"><div><span>Checked by software</span><p>Slide structure, references and selected numbers pass automated rules.</p></div><div><span>Linked to a source</span><p>Each claim points to the page, table or figure it came from.</p></div><div><span>Needs your review</span><p>Interpretations the software cannot verify stay marked for you.</p></div></div></div><div class="report-window app-frame"><div class="window-bar"><span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>FICTA-1 / quality-report.md</span></div><div class="report-body"><p class="report-status">NOT YET CLEARED</p><p>Critical 0 · Major 1 · Minor 3 · Info 5</p><p class="report-note">One interpretation is flagged for expert review before the talk. That flag is the check doing its job.</p><div class="ledger-row"><span>needs-expert-review</span><strong>1</strong></div><div class="ledger-row"><span>source-backed</span><strong>9</strong></div><div class="report-finding"><span>MAJOR · SLIDE 7</span><p>Examplimab could be an option after failure of a TNF inhibitor.</p><small>Presenter's extrapolation. FICTA-1 enrolled biologic-naive patients only; no data in TNF-inadequate responders.</small></div></div></div></div></section>
+    <section class="section pilot" id="pilot"><div class="wrap"><div class="section-intro"><h2>What the pilot can do today</h2></div><div class="pilot-grid"><div class="pilot-main"><div class="pilot-row"><span class="pilot-state working">Working</span><p><strong>Build a scientific talk:</strong> intake, source-linked storyboard, approval step, editable PowerPoint and a quality report.</p></div><div class="pilot-row"><span class="pilot-state experimental">Experimental</span><p><strong>Use your institution's template:</strong> works for a limited set of layouts, so check the rendered slides before you present.</p></div><div class="pilot-row"><span class="pilot-state experimental">Experimental</span><p><strong>Upgrade an existing deck:</strong> a per-slide diagnosis and a rebuild through an approved storyboard; your original file is never edited.</p></div><div class="pilot-row"><span class="pilot-state planned">Planned</span><p><strong>Go further:</strong> HTML slides, editing a deck in place and rehearsal support are not in this pilot yet.</p></div><div class="maker-line"><p>Making and giving presentations is almost a daily job for me as a doctor and researcher. I would rather spend that time reading the paper and sharpening the main message than fighting fonts and layouts in PowerPoint. So I built a skill that keeps the thinking with me and takes the layout off my hands.</p><strong>Hannah den Braanker, rheumatology fellow and postdoctoral researcher</strong></div></div><div class="faq"><h3>Questions</h3><details><summary>What do I need?</summary><p>An AI agent with access to your files and a terminal: Codex desktop, Claude Cowork or Claude Code.</p></details><details><summary>Does my material leave my computer?</summary><p>The skill and your files stay on your computer. Your agent's model provider still processes what the agent reads, under that provider's terms.</p></details><details><summary>Can I use my institution's template?</summary><p>Yes, in an experimental mode for PowerPoint templates. Check the rendered slides before you present.</p></details><details><summary>What does it cost?</summary><p>The skill is free. You pay only for the AI agent you already use.</p></details></div></div></div></section>
+    <section class="close"><div class="wrap close-inner"><h2>Start with your next talk</h2><p>Open the start prompt in your agent and go from your own story to slides you can present.</p><div class="close-actions"><a class="button button-light" href="https://github.com/HdBraanker/academic-presenting/blob/main/PILOT-START.md">Get the start prompt <span aria-hidden="true">↗</span></a><a class="text-link light-link" href="https://github.com/HdBraanker/academic-presenting">View the code on GitHub <span aria-hidden="true">↗</span></a></div></div></section>
+  </main>
+  <footer class="site-footer"><div class="wrap footer-inner"><p>Open-source presentation skill for researchers. MIT licence.</p><div><a href="https://github.com/HdBraanker/academic-presenting">GitHub</a><a href="https://github.com/HdBraanker/academic-presenting/blob/main/LICENSE">MIT licence</a></div></div></footer>
+</body>
 </html>
