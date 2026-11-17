@@ -1,8 +1,8 @@
-# Academic Presenting — colleague pilot
+# Academic Presenting 
 
 An Agent Skill for building scientifically rigorous, editable PowerPoint presentations from a presenter's own input and checked sources. This is a test version of the **PowerPoint** workflow.
 
-See the [public pilot website](https://academicpresenting.dev/) for the workflow and a clearly labelled synthetic slide example.
+See the (https://academicpresenting.dev/) for the workflow and a clearly labelled synthetic slide example.
 
 **Start here:** [PILOT-START.md](PILOT-START.md) has one prompt to paste into Codex desktop, Claude Cowork or Claude Code. It begins with presenter onboarding, then asks for a talk outline and sources. The agent shows a storyboard and waits for explicit approval before rendering slides.
 
